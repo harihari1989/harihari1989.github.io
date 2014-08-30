@@ -4,6 +4,9 @@
 		<!-- Including angularjs -->
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
 
+		<!-- Include the Jquery Library -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+
 		<!-- Including BootStrap Files -->
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -11,37 +14,128 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<!-- Latest compiled and minified JavaScript for bootstrap-->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+		<script type="text/javascript">
+			jQuery(function () {
+				jQuery('#myTab a:last').tab('show')
+			});
+		</script>
+		<style type='text/css'>
+			body {
+				background-color: #CCC;
+			}
+			#content {
+				background-color: #FFF;
+				border-radius: 5px;
+			}
+			#content .main {
+				padding: 20px;
+			}
+			#content .sidebar {
+				padding: 10px;
+			}
+			#content p {
+				line-height: 30px;
+			}
+		</style>
 	</head>
 	<body>
  		<div class="container">
-			<div id="content">
-				<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-					<li class="active"><a href="#about" data-toggle="tab">About</a></li>
-					<li><a href="#projects" data-toggle="tab">Projects</a></li>
-					<li><a href="#interests" data-toggle="tab">Interests</a></li>
-					<li><a href="#contact" data-toggle="tab">Contact</a></li>
-				</ul>
-				<div id="my-tab-content" class="tab-content">
-					<div class="tab-pane active" id="about">
-						<h1>About</h1>
-							<p>Welcome, I am currently working as Software Engineer at AthenaHealth.</p>
-							<p>Graduated with Bachelors in Computer Science at Madras Insitute of Technology, Anna University.</p>
-							<p>Interested in solving hard computer science problems.</p>
-							<p>And an ardent Math lover who wants Math to love him back.</p>
-					</div>
-					<div class="tab-pane" id="projects">
-					<h1>Projects</h1>
-					</div>
-					<div class="tab-pane" id="interests">
-					<h1>Interests</h1>
-					</div>
-					<div class="tab-pane" id="contact">
-					<h1>Contact</h1>
-					</div>
+			<div class="navbar navbar-inverse">
+				<div class='navbar-inner nav-collapse' style="height: auto;">
+					<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+						<li class="active"><a href="#about" data-toggle="tab">About</a></li>
+						<li><a href="#projects" data-toggle="tab">Projects</a></li>
+						<li><a href="#interests" data-toggle="tab">Interests</a></li>
+						<li class="pull-right"><a href="#connect" data-toggle="tab">Connect</a></li>
+					</ul>
 				</div>
 			</div>
+			<div id="content" class="row-fluid">
+				<div class="row">
+					<div class="col-md-offset-1">
+						<div id="my-tab-content" class="tab-content">
+							<div class="tab-pane active" id="about">
+								<h1>About Me</h1>
+								<div class="container">
+									<div class="row">
+										<div class = "col-md-3">
+											<img ng-src="hari.jpg"></img>
+										</div>
+										<div class="col-md-7">
+											<p>I graduated with Bachelors in Computer Science at Madras Insitute of Technology, Anna University. Interested in solving hard computer science problems. An ardent Math lover who wants Math to love him back. I am huge fan of C++, Python and JavaScript. I took <a href="https://www.coursera.org/course/ml">this course</a> about Machine Learning from Coursera by Prof. Andrew N.G during the fall of 2013 and have been really hooked to Machine Learning since then. Recently, I have started a blog <a href="http://machinelearner.quora.com/">Machine Learner</a> on Quora. <a href="https://github.com/harihari1989">Here</a> is the link to my GitHub repositories. I really enjoy science fiction movies and a big fan of Tom Cruise. I am currently working as Software Engineer at AthenaHealth.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="projects">
+								<div class="row"><h1>Projects Done</h1></div>
+								<div class="row">
+									<h2><a href="https://github.com/harihari1989/Sentiment-Anaysis">Sentiment Analysis</a></h2>
+									<p>Sentiment Analysis of twitter live stream data using AFINN text. This is done as a part of the Introduction to Data Science Coursera Course.<p>
+								</div>
+								<div class="row">
+									<h2>Inverse Reversal Encryption</h2> 
+									<p>
+										Generated and distributed random keys using a combinatorial key distribution and designed an encryption scheme called inverse reversal encryption. Implemented this project using Java. Used the Java Swing Library
+										extensively and designed an UI Layer to handle user inputs. 								
+									</p>
+								</div>
+								<div class="row">
+									<h2>Search in Pacman</h2>
+									<p>								
+										Implemented search algorithms like Breadth First Search, Depth First Search, Uniform Cost Search and A* search to guide pacman to reach its goal in a maze like environment.  Designed heuristics for Uniform Cost Search and A* search and implemented those. Also made some tweaks to find a solution when there are multiple goal states. Implemented this project using Python.
+									</p>
+								</div>
+								<div class="row">
+									<h2><a href="https://github.com/harihari1989/SpellingCorrector">Spelling Corrector</a></h2>
+									<p>
+										Implemented a spelling corrector app which takes in a misspelt word and attempts to correct it to a dictionary word using NodeJS. Made use of the technique mentioned by Peter Norvig in this blog <a href="http://norvig.com/spell-correct.html">How to write a spelling corrector</a>.
+									</p>
+								</div>
+								<div class="row">
+									<h2>Recognition of Hand Written Digits</h2>
+									<p>
+										Implemented One vs All logistic regression technique to identity hand written digits. Used a high level interpreted language called Octave for implementation.  Used 20 pixel by 20 pixel grayscale image of Hand-written digits as a training set for the algorithm. Also implemented the same using a 3 layered			Neural Network and saw the accuracy improve from previous 94.9% (for logistic regression) to 97.0%.
+									</p>
+								</div>
+							</div>
+							<div class="tab-pane" id="interests">
+								<div class="row">
+									<h1>Technical Interests</h1>
+									<ul>
+										<li>Algorithms</li>
+										<li>Machine Learning</li>
+										<li>Data Structures</li>
+										<li>Distributed Systems</li>
+									</ul>
+								</div>
+								<div class="row">
+									<h1>Other Interests</h1>
+									<ul>
+										<li>Science Fiction</li>
+										<li>Bowling</li>
+										<li>Cricket</li>
+									</ul>							
+								</div>
+							</div>
+							<div class="tab-pane" id="connect">
+								<h1>Contact Me</h1>
+								<ul>
+									<li>Email ID: harihari1989 [at] gmail [dot] com</li>
+									<li>Quora: <a href="http://www.quora.com/Hari-Haran-10">Hariharan</a></li>
+									<li>LinkedIn: <a href="https://www.linkedin.com/pub/hariharan-anantharaman/27/916/474">Hariharan Anantharaman</a></li>
+									<li>GitHub: <a href="harihari1989">harihari1989</a></li>
+								</ul>						
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
 		</div>
+
  	</body>
 </html>
