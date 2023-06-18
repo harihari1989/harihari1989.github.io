@@ -3,124 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matrix Background</title>
+  <title>Matrix Profile</title>
   <style>
+    /* Add your custom CSS styles here */
     body {
+      font-family: Arial, sans-serif;
       background-color: #000;
+      color: #fff;
       margin: 0;
-      overflow: hidden;
+      padding: 0;
     }
 
-    canvas {
-      display: block;
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    a {
+      color: #33ff33;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#lp">Rich Dev Poor Dev</a></li>
+        <li style="float: right;"><a href="#connect">Connect</a></li>
+      </ul>
+    </nav>
 
-  <script>
-    // Matrix pixel settings
-    var symbolSize = 20; // Size of each symbol/pixel
-    var streamLength = 30; // Number of streams/pixel columns
-    var symbolSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // Set of symbols
+    <div id="about">
+      <h1>About Me</h1>
+      <div class="profile">
+        <img src="hari.jpg" alt="Profile Picture">
+        <div class="bio">
+          <p>
+            I graduated with a Bachelors in Computer Science at Madras
+            Institute of Technology, Anna University. Interested in
+            solving hard computer science problems. An ardent Math lover
+            who wants Math to love him back. I am a huge fan of Python and
+            JavaScript. I took <a href="https://www.coursera.org/course/ml">this course</a> about Machine Learning from Coursera by Prof. Andrew N.G
+            during the fall of 2013 and have been really hooked to Machine
+            Learning since then. Recently, I have started a blog <a href="http://machinelearner.quora.com/">Machine Learner</a> on Quora.
+            <a href="https://github.com/harihari1989">Here</a> is the link to my GitHub repositories. I really enjoy science
+            fiction movies and I am a big fan of Tom Cruise. I am currently
+            working as a Software Engineer at Microsoft.
+          </p>
+        </div>
+      </div>
+    </div>
 
-    var canvas = document.getElementById("matrix");
-    var context = canvas.getContext("2d");
+    <div id="projects">
+      <h1>Projects Done</h1>
+      <div class="project">
+        <h2><a href="https://github.com/harihari1989/Sentiment-Anaysis">Sentiment Analysis</a></h2>
+        <p>
+          Sentiment Analysis of twitter live stream data using AFINN text.
+          This is done as a part of the Introduction to Data Science Coursera
+          Course.
+        </p>
+      </div>
+      <!-- Add more project items here -->
+    </div>
 
-    // Set canvas size to fill the whole window
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    <div id="interests">
+      <h1>Technical Interests</h1>
+      <ul>
+        <li>Algorithms</li>
+        <li>Machine Learning</li>
+        <li>Data Structures</li>
+        <li>Distributed Systems</li>
+      </ul>
+      <h1>Other Interests</h1>
+      <ul>
+        <li>Science Fiction</li>
+        <li>Bowling</li>
+        <li>Cricket</li>
+      </ul>
+    </div>
 
-    // Calculate the number of columns based on the canvas width and symbol size
-    var columns = Math.ceil(canvas.width / symbolSize);
+    <div id="lp">
+      <h1>Elemental Principles to achieve elevation in software</h1>
+      <ul>
+        <li>
+          As a leader, you should not only practice the art of perfection
+          but also perfect the art of practicing
+        </li>
+        <!-- Add more principles here -->
+      </ul>
+    </div>
 
-    // Create an array to hold the streams
-    var streams = [];
-
-    // Create symbol objects for each column
-    for (var i = 0; i < columns; i++) {
-      var stream = new Stream(i * symbolSize);
-      stream.generateSymbols();
-      streams.push(stream);
-    }
-
-    // Function to update and render the symbol streams
-    function update() {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-
-      streams.forEach(function(stream) {
-        stream.render();
-      });
-
-      requestAnimationFrame(update);
-    }
-
-    // Symbol object
-    function Symbol(x, y, speed, first) {
-      this.x = x;
-      this.y = y;
-      this.value;
-      this.speed = speed;
-      this.first = first;
-
-      this.switchInterval = Math.floor(Math.random() * 20) + 10;
-
-      // Set a random symbol
-      this.setRandomSymbol = function() {
-        if (frameCount % this.switchInterval == 0) {
-          this.value = symbolSet[Math.floor(Math.random() * symbolSet.length)];
-        }
-      }
-
-      // Update the symbol position
-      this.update = function() {
-        if (this.y >= canvas.height) {
-          this.y = 0;
-        } else {
-          this.y += this.speed;
-        }
-      }
-    }
-
-    // Stream object
-    function Stream(x) {
-      this.symbols = [];
-      this.totalSymbols = Math.floor(Math.random() * (streamLength - 10)) + 10;
-      this.speed = Math.random() * 5 + 1;
-
-      // Generate symbols for the stream
-      this.generateSymbols = function() {
-        var y = 0;
-        var first = true;
-
-        for (var i = 0; i <= this.totalSymbols; i++) {
-          var symbol = new Symbol(x, y, this.speed, first);
-          symbol.setRandomSymbol();
-          this.symbols.push(symbol);
-
-          y -= symbolSize;
-          first = false;
-        }
-      }
-
-      // Render the symbols in the stream
-      this.render = function() {
-        this.symbols.forEach(function(symbol) {
-          if (symbol.first) {
-            context.fillStyle = "#33ff33";
-          } else {
-            context.fillStyle = "#00ff00";
-          }
-          context.fillText(symbol.value, symbol.x, symbol.y);
-          symbol.update();
-          symbol.setRandomSymbol();
-        });
-      }
-    }
-
-    // Start the animation
-    update();
-  </script>
+    <div id="connect">
+      <h1>Contact Me</h1>
+      <ul>
+        <li>Email ID: harihari1989@gmail.com</li>
+        <li>
+          Quora: <a href="http://www.quora.com/Hari-Haran-10">Hariharan</a>
+        </li>
+        <li>
+          LinkedIn:{' '}
+          <a href="https://www.linkedin.com/pub/hariharan-anantharaman/27/916/474">
+            Hariharan Anantharaman
+          </a>
+        </li>
+        <li>GitHub: <a href="https://github.com/harihari1989">harihari1989</a></li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>
