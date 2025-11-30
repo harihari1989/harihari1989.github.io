@@ -8,34 +8,279 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
     <style>
+        :root {
+            --bg: #0c1222;
+            --panel: rgba(255, 255, 255, 0.04);
+            --panel-strong: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.12);
+            --accent: #22d3ee;
+            --accent-2: #f59e0b;
+            --text: #e7ecf6;
+            --muted: #94a3b8;
+            --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+            --radius: 18px;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            background-color: #f8f9fa;
+            font-family: 'Space Grotesk', 'Inter', 'Segoe UI', sans-serif;
+            background:
+                radial-gradient(110% 110% at 12% 20%, rgba(34, 211, 238, 0.14), transparent),
+                radial-gradient(90% 90% at 88% 12%, rgba(245, 158, 11, 0.14), transparent),
+                #0c1222;
+            color: var(--text);
+            margin: 0;
+            min-height: 100vh;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--accent-2);
         }
         #content {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            margin-top: 1rem;
+            box-shadow: none;
         }
         nav {
             position: sticky;
-            top: 0;
+            top: 12px;
             z-index: 1000;
-            background-color: #343a40;
+        }
+        .navbar {
+            background: rgba(12, 18, 34, 0.82) !important;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         .nav-link {
-            color: #ffffff !important;
+            color: var(--text) !important;
+            font-weight: 500;
         }
-        .nav-link.active {
-            font-weight: bold;
-            color: #ffc107 !important;
+        .nav-link.active,
+        .nav-link:hover {
+            color: var(--accent) !important;
         }
-        .rounded-circle {
-            border: 2px solid #343a40;
+        .nav-item + .nav-item {
+            margin-left: 4px;
+        }
+        .panel {
+            background: linear-gradient(145deg, var(--panel), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-bottom: 22px;
+            box-shadow: var(--shadow);
+        }
+        .panel h2 {
+            margin-bottom: 14px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+        }
+        p {
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(60% 60% at 80% 10%, rgba(255, 255, 255, 0.05), transparent);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 3vw, 2.9rem);
+            margin-bottom: 10px;
+        }
+        .avatar-ring {
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 50%;
+            background: conic-gradient(from 120deg, var(--accent), var(--accent-2), var(--accent));
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+        }
+        .avatar-ring img {
+            display: block;
+            border-radius: 50%;
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border: 6px solid #0c1222;
+        }
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        .pill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--panel-strong);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .stat {
+            background: var(--panel-strong);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .stat-label {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .btn-accent {
+            background: linear-gradient(120deg, var(--accent), var(--accent-2));
+            color: #0c1222;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+        }
+        .btn-ghost {
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 12px 18px;
+            border-radius: 12px;
+            background: transparent;
+            font-weight: 700;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+        }
+        .feature {
+            background: var(--panel-strong);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+            height: 100%;
+        }
+        .feature h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+        .list-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .list-pills span {
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--panel-strong);
+            color: var(--text);
+        }
+        .impact-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .impact-item {
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--panel-strong);
+            margin-bottom: 10px;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 14px;
+        }
+        .project {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--panel-strong);
+            padding: 14px;
+        }
+        .principles {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .principles li {
+            border-bottom: 1px solid var(--border);
+            padding: 10px 0;
+            color: var(--text);
+        }
+        .principles li:last-child {
+            border-bottom: none;
+        }
+        .connect-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .connect-list li {
+            margin-bottom: 8px;
+        }
+        .section-hidden {
+            display: none;
+        }
+        @media (max-width: 992px) {
+            .navbar {
+                border-radius: 12px;
+            }
+            .avatar-ring img {
+                width: 180px;
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -44,28 +289,37 @@
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">My Portfolio</a>
+                <a class="navbar-brand" href="#">Hariharan Anantharaman</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" id="about-tab" href="#about">About</a>
+                            <a class="nav-link active nav-section" id="about-tab" href="#about" data-section="about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="projects-tab" href="#projects">Projects</a>
+                            <a class="nav-link nav-section" id="work-tab" href="#work" data-section="work">Work</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="interests-tab" href="#interests">Interests</a>
+                            <a class="nav-link nav-section" id="strengths-tab" href="#strengths" data-section="strengths">Strengths</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="lp-tab" href="#lp">Rich Dev Poor Dev</a>
+                            <a class="nav-link nav-section" id="impact-tab" href="#impact" data-section="impact">Impact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-section" id="projects-tab" href="#projects" data-section="projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-section" id="interests-tab" href="#interests" data-section="interests">Interests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-section" id="lp-tab" href="#lp" data-section="lp">Rich Dev Poor Dev</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" id="connect-tab" href="#connect">Connect</a>
+                            <a class="nav-link nav-section" id="connect-tab" href="#connect" data-section="connect">Connect</a>
                         </li>
                     </ul>
                 </div>
@@ -74,69 +328,205 @@
 
         <!-- Content -->
         <div id="content">
-            <div id="about">
-                <h2>About</h2>
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-12 text-center">
-                        <img src="hari.jpeg" alt="Hariharan Anantharaman" class="img-fluid rounded-circle my-3">
+            <main class="py-4">
+                <section id="about" class="panel hero">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-4 col-md-5 col-sm-12 text-center">
+                            <div class="avatar-ring my-3">
+                                <img src="hari.jpeg" alt="Hariharan Anantharaman" class="img-fluid">
+                            </div>
+                            <div class="pill-row">
+                                <span class="pill">Live-site leadership</span>
+                                <span class="pill">Voice reliability</span>
+                                <span class="pill">Systems design</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-12">
+                            <p class="eyebrow">Senior Software Engineer · Microsoft</p>
+                            <h1>Engineering resilient, intelligent calling experiences for Microsoft Teams.</h1>
+                            <p>I own architecture and live-site health for Enterprise Voice in Microsoft Teams. I pair distributed systems thinking with AI-driven operations to keep global calling reliable, observable, and fast to recover.</p>
+                            <div class="stat-row">
+                                <div class="stat">
+                                    <div class="stat-value">$1.5B</div>
+                                    <div class="stat-label">revenue protected via live-site reliability</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">30% faster</div>
+                                    <div class="stat-label">incident triage through automation</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">Cross-functional</div>
+                                    <div class="stat-label">leadership</div>
+                                </div>
+                            </div>
+                            <div class="cta-row">
+                                <a class="btn btn-accent section-link" href="#work" data-section="work">See the work</a>
+                                <a class="btn btn-ghost section-link" href="#connect" data-section="connect">Connect</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-9 col-md-8 col-sm-12">
-                        <p>I am a passionate Software Engineer at Microsoft with a Bachelor's in Computer Science from the Madras Institute of Technology. I thrive on solving complex problems and have a deep love for math and its applications in computer science. A Python and JavaScript enthusiast, I am captivated by Machine Learning, which I discovered through Prof. Andrew N.G's Coursera course. Connect with me on <a href="https://github.com/harihari1989">GitHub</a> to explore my projects.</p>
+                </section>
+
+                <section id="work" class="panel">
+                    <h2>What I Work On</h2>
+                    <p>I lead architecture and live-site engineering for Microsoft Teams Enterprise Voice (Calling), shaping mission-critical calling flows end to end.</p>
+                    <div class="feature-grid">
+                        <div class="feature">
+                            <h3>Unified Flow</h3>
+                            <p>Redesigned orchestration layer that elevates reliability for Teams Calling.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Windowing & advanced scenarios</h3>
+                            <p>Stronger state management and multi-device calling experiences.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Smart ICM & incident automation</h3>
+                            <p>AI-driven incident correlation and remediation across the calling stack.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Post-mortem, PRISM, MoreInfo</h3>
+                            <p>Sharper workflows and clarity to raise engineering quality across teams.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>BRB bug automation</h3>
+                            <p>Automated root-cause analysis and triage using AI and signal-rich logs.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Live-site ownership</h3>
+                            <p>Reliability, monitoring, alerting, and incident response for global calling.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <p class="mt-3 mb-0">This work safeguards more than $1.5B in revenue and keeps a worldwide enterprise communication platform dependable.</p>
+                </section>
 
-            <div id="projects">
-                <h2>Projects</h2>
-                <ul>
-                    <li><a href="https://github.com/harihari1989/Sentiment-Anaysis">Sentiment Analysis</a> - Analyzing Twitter data using AFINN text.</li>
-                    <li>Inverse Reversal Encryption - Custom encryption scheme implemented in Java.</li>
-                    <li>Search in Pacman - Search algorithms implemented in Python to guide Pacman.</li>
-                    <li><a href="https://github.com/harihari1989/SpellingCorrector">Spelling Corrector</a> - Node.js app based on Peter Norvig's technique.</li>
-                </ul>
-            </div>
+                <section id="strengths" class="panel">
+                    <h2>Technical Strengths</h2>
+                    <div class="list-pills">
+                        <span>Distributed systems: stateful services, HA, failover</span>
+                        <span>VoIP/PSTN calling architecture</span>
+                        <span>C#, TypeScript, React, Python</span>
+                        <span>AI & agents: LangChain, MCP, Kusto-backed agents, RAG, LLM orchestration</span>
+                        <span>Observability: incidents, monitoring, dashboards, log pipelines</span>
+                        <span>Systems engineering: performance, resiliency, fault isolation</span>
+                        <span>Secure software: patented encryption and deployment frameworks</span>
+                    </div>
+                </section>
 
-            <div id="interests">
-                <h2>Interests</h2>
-                <ul>
-                    <li>Algorithms</li>
-                    <li>Machine Learning</li>
-                    <li>Distributed Systems</li>
-                    <li>Science Fiction</li>
-                </ul>
-            </div>
+                <section id="impact" class="panel">
+                    <h2>Impact at Microsoft</h2>
+                    <ul class="impact-list">
+                        <li class="impact-item">Lead a 40-engineer cross-functional live-site group across feature, infra, and middle-tier teams.</li>
+                        <li class="impact-item">Run monthly CVP-level service reviews covering health, reliability, rollout status, and risk.</li>
+                        <li class="impact-item">Built automated workflows that cut incident triage time by more than 60%.</li>
+                        <li class="impact-item">Drove architecture changes to calling flows that improved reliability by double-digit percentages.</li>
+                        <li class="impact-item">Strengthened engineering systems and productivity through tooling, dashboards, and automation.</li>
+                    </ul>
+                </section>
 
-            <div id="lp">
-                <h2>Rich Dev Poor Dev</h2>
-                <ul>
-                    <li>You should not only practice the art of perfection but also perfect the art of practicing</li>
-                    <li>You should be the Go To Person for problems and Go Through Person for solutions.</li>
-                    <li>Your ideas should not be bounded by the limits of what has already been done, your ideas should be unbounded by the limitlessness of what can be possibly done.</li>
-                    <li>You should be humble enough to do things below you current level and hungry enough to do things beyond your current level. </li>
-                    <li>You should have the confidence to explain the things you know, humility to accept the things you don't and preserverence to do what it takes to learn the things which you dont know and get confidence.</li>
-                    <li>Features you deliver by not thinking hard enough won’t last long enough.</li>
-                    <li>You should know when to hit refresh and when to start afresh. </li>
-                    <li>You should not only articulate what you ideate but also ideate what you articulate. </li>
-                    <li>You should not be proud because of the fact that there are many people working behind you, the people behind you should be proud because you are working in front of them. </li>
-                    <li>You should know when to be fast and furious and when to be slow and curious.</li>
-                    <li>You should not only calibrate you concentration on doing the right things but also concentrate on the way you calibrate to do things right.  </li>
-                    <li>You should have a super power, i.e to make others super.  </li>
-                    <li>In an established business, the ideas should not only be radical enough to be path breaking, but also practical enough to be non-breaking.</li>
-                    <li>JAR principle of level headedness (Just About Right principle): Don't overthink and overdo. Don't underthink and underdo. Think Right enough and do just enough. </li>
-                    <li>In a legacy system, a dev should not only look at the way the code works, but also work on the way the code looks. </li>
-                    <li>Ideas must be malleable enough to be marketable and ductile enough to be democratizable. </li>
-                    <li>Customers don't care what you do, unless you do what they care </li>
-                </ul>
-            </div>
+                <section id="projects" class="panel">
+                    <h2>Projects</h2>
+                    <div class="projects-grid">
+                        <div class="project">
+                            <h3><a href="https://github.com/harihari1989/Sentiment-Anaysis">Sentiment Analysis</a></h3>
+                            <p>Analyzing Twitter data using AFINN text.</p>
+                        </div>
+                        <div class="project">
+                            <h3>Inverse Reversal Encryption</h3>
+                            <p>Custom encryption scheme implemented in Java.</p>
+                        </div>
+                        <div class="project">
+                            <h3>Search in Pacman</h3>
+                            <p>Search algorithms implemented in Python to guide Pacman.</p>
+                        </div>
+                        <div class="project">
+                            <h3><a href="https://github.com/harihari1989/SpellingCorrector">Spelling Corrector</a></h3>
+                            <p>Node.js app based on Peter Norvig's technique.</p>
+                        </div>
+                    </div>
+                </section>
 
-            <div id="connect">
-                <h2>Connect</h2>
-                <ul>
-                    <li>Email: harihari1989@gmail.com</li>
-                    <li><a href="https://www.linkedin.com/pub/hariharan-anantharaman/27/916/474">LinkedIn</a></li>
-                </ul>
-            </div>
+                <section id="interests" class="panel">
+                    <h2>Interests</h2>
+                    <div class="list-pills">
+                        <span>Algorithms</span>
+                        <span>Machine Learning</span>
+                        <span>Distributed Systems</span>
+                        <span>Science Fiction</span>
+                    </div>
+                </section>
+
+                <section id="lp" class="panel">
+                    <h2>Rich Dev Poor Dev</h2>
+                    <ul class="principles">
+                        <li>You should not only practice the art of perfection but also perfect the art of practicing.</li>
+                        <li>You should be the Go To Person for problems and Go Through Person for solutions.</li>
+                        <li>Your ideas should not be bounded by the limits of what has already been done; your ideas should be unbounded by the limitlessness of what can be possibly done.</li>
+                        <li>You should be humble enough to do things below your current level and hungry enough to do things beyond your current level.</li>
+                        <li>You should have the confidence to explain the things you know, humility to accept the things you do not, and perseverance to learn what you need to know.</li>
+                        <li>Features you deliver by not thinking hard enough will not last long enough.</li>
+                        <li>You should know when to hit refresh and when to start afresh.</li>
+                        <li>You should not only articulate what you ideate but also ideate what you articulate.</li>
+                        <li>You should not be proud because there are many people working behind you; the people behind you should be proud because you are working in front of them.</li>
+                        <li>You should know when to be fast and furious and when to be slow and curious.</li>
+                        <li>You should not only calibrate your concentration on doing the right things but also concentrate on the way you calibrate to do things right.</li>
+                        <li>You should have a super power: to make others super.</li>
+                        <li>In an established business, ideas should not only be radical enough to be path breaking, but also practical enough to be non-breaking.</li>
+                        <li>JAR principle of level headedness (Just About Right principle): do not overthink and overdo. Do not underthink and underdo. Think right enough and do just enough.</li>
+                        <li>In a legacy system, a dev should not only look at the way the code works, but also work on the way the code looks.</li>
+                        <li>Ideas must be malleable enough to be marketable and ductile enough to be democratizable.</li>
+                        <li>Customers do not care what you do, unless you do what they care.</li>
+                        <li>Right code, committed at the right time, will reverberate through space and time.</li>
+                        <li>Life’s greatest code — consciousness — is self-compiled. The game of You can only be played by You by being You.</li>
+                    </ul>
+                </section>
+
+                <section id="connect" class="panel">
+                    <h2>Connect</h2>
+                    <ul class="connect-list">
+                        <li>Email: <a href="mailto:harihari1989@gmail.com">harihari1989@gmail.com</a></li>
+                        <li><a href="https://www.linkedin.com/pub/hariharan-anantharaman/27/916/474">LinkedIn</a></li>
+                        <li><a href="https://github.com/harihari1989">GitHub</a></li>
+                    </ul>
+                </section>
+            </main>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = Array.from(document.querySelectorAll('main section'));
+            const navLinks = Array.from(document.querySelectorAll('.nav-section'));
+            const sectionLinks = Array.from(document.querySelectorAll('.section-link'));
+
+            const showSection = (id) => {
+                sections.forEach((section) => {
+                    if (section.id === id || section.id === 'about') {
+                        section.classList.remove('section-hidden');
+                    } else {
+                        section.classList.add('section-hidden');
+                    }
+                });
+                navLinks.forEach((link) => {
+                    link.classList.toggle('active', link.dataset.section === id);
+                });
+            };
+
+            // Hide all except hero on load
+            showSection('about');
+
+            const handleClick = (event) => {
+                const target = event.currentTarget.dataset.section;
+                if (!target) return;
+                event.preventDefault();
+                showSection(target);
+                const sectionEl = document.getElementById(target);
+                if (sectionEl) {
+                    sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            };
+
+            navLinks.forEach((link) => link.addEventListener('click', handleClick));
+            sectionLinks.forEach((link) => link.addEventListener('click', handleClick));
+        });
+    </script>
 </body>
 </html>
