@@ -240,14 +240,111 @@
         }
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
         }
-        .project {
+        .projects-panel {
+            position: relative;
+            overflow: hidden;
+        }
+        .projects-panel:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(60% 60% at 90% 10%, rgba(34, 211, 238, 0.12), transparent);
+            pointer-events: none;
+        }
+        .projects-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+        .projects-header p {
+            max-width: 560px;
+        }
+        .project-card {
             border: 1px solid var(--border);
-            border-radius: 14px;
-            background: var(--panel-strong);
-            padding: 14px;
+            border-radius: 16px;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            animation: projectRise 0.6s ease both;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 211, 238, 0.4);
+            box-shadow: 0 24px 40px rgba(0, 0, 0, 0.35);
+        }
+        .project-meta {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .project-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .project-tags span {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(12, 18, 34, 0.6);
+            color: var(--text);
+        }
+        .project-actions {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: linear-gradient(120deg, rgba(34, 211, 238, 0.2), rgba(245, 158, 11, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .project-link:hover {
+            color: #0c1222;
+            background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        }
+        @keyframes projectRise {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .projects-grid .project-card:nth-child(1) { animation-delay: 0.05s; }
+        .projects-grid .project-card:nth-child(2) { animation-delay: 0.1s; }
+        .projects-grid .project-card:nth-child(3) { animation-delay: 0.15s; }
+        .projects-grid .project-card:nth-child(4) { animation-delay: 0.2s; }
+        .projects-grid .project-card:nth-child(5) { animation-delay: 0.25s; }
+        .projects-grid .project-card:nth-child(6) { animation-delay: 0.3s; }
+        .projects-grid .project-card:nth-child(7) { animation-delay: 0.35s; }
         }
         .principles {
             list-style: none;
@@ -423,25 +520,94 @@
                     </ul>
                 </section>
 
-                <section id="projects" class="panel">
-                    <h2>Projects</h2>
+                <section id="projects" class="panel projects-panel">
+                    <div class="projects-header">
+                        <div>
+                            <p class="eyebrow">Personal labs</p>
+                            <h2>Projects</h2>
+                            <p>Hands-on explorations across algorithms, distributed systems, and applied machine learning. Each project is a living notebook of ideas, patterns, and experiments.</p>
+                        </div>
+                    </div>
                     <div class="projects-grid">
-                        <div class="project">
+                        <article class="project-card">
+                            <div class="project-meta">Algorithms Lab</div>
+                            <h3><a href="https://harihari1989.github.io/algorithms.github.io/">Algorithm Notes</a></h3>
+                            <p>Walkthroughs of core algorithms, complexity breakdowns, and problem-solving patterns with concise write-ups.</p>
+                            <div class="project-tags">
+                                <span>Search</span>
+                                <span>DP</span>
+                                <span>Graph</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="project-link" href="https://harihari1989.github.io/algorithms.github.io/">Visit project</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">Distributed Systems</div>
+                            <h3><a href="https://harihari1989.github.io/distributedsystems.github.io/index.html">Systems Field Guide</a></h3>
+                            <p>Notes and explainers on replication, consensus, failure handling, and real-world system tradeoffs.</p>
+                            <div class="project-tags">
+                                <span>Consensus</span>
+                                <span>Reliability</span>
+                                <span>Scale</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="project-link" href="https://harihari1989.github.io/distributedsystems.github.io/index.html">Visit project</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">Machine Learner</div>
+                            <h3><a href="https://harihari1989.github.io/machinelearner.github.io/">ML Notes</a></h3>
+                            <p>Practical learning journal covering fundamentals, model behavior, and hands-on experiments.</p>
+                            <div class="project-tags">
+                                <span>Supervised</span>
+                                <span>Optimization</span>
+                                <span>Experiments</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="project-link" href="https://harihari1989.github.io/machinelearner.github.io/">Visit project</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">Text Analytics</div>
                             <h3><a href="https://github.com/harihari1989/Sentiment-Anaysis">Sentiment Analysis</a></h3>
-                            <p>Analyzing Twitter data using AFINN text.</p>
-                        </div>
-                        <div class="project">
+                            <p>Analyzing Twitter data using AFINN text for polarity scoring and trend insights.</p>
+                            <div class="project-tags">
+                                <span>NLP</span>
+                                <span>AFINN</span>
+                                <span>Python</span>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">Security</div>
                             <h3>Inverse Reversal Encryption</h3>
-                            <p>Custom encryption scheme implemented in Java.</p>
-                        </div>
-                        <div class="project">
+                            <p>Custom encryption scheme implemented in Java with reversible transformations.</p>
+                            <div class="project-tags">
+                                <span>Crypto</span>
+                                <span>Java</span>
+                                <span>Design</span>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">AI Search</div>
                             <h3>Search in Pacman</h3>
-                            <p>Search algorithms implemented in Python to guide Pacman.</p>
-                        </div>
-                        <div class="project">
+                            <p>Search algorithms implemented in Python to guide Pacman across mazes.</p>
+                            <div class="project-tags">
+                                <span>Heuristics</span>
+                                <span>Python</span>
+                                <span>AI</span>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">Language</div>
                             <h3><a href="https://github.com/harihari1989/SpellingCorrector">Spelling Corrector</a></h3>
-                            <p>Node.js app based on Peter Norvig's technique.</p>
-                        </div>
+                            <p>Node.js app based on Peter Norvig's technique for candidate generation.</p>
+                            <div class="project-tags">
+                                <span>Node.js</span>
+                                <span>NLP</span>
+                                <span>UI</span>
+                            </div>
+                        </article>
                     </div>
                 </section>
 
