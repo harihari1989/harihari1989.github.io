@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hariharan Anantharaman | Microsoft Teams Engineering Portfolio</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -555,6 +556,13 @@
         .map-header {
             margin-bottom: 14px;
         }
+        .map-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
         .route-chip {
             display: inline-flex;
             align-items: center;
@@ -566,6 +574,30 @@
             color: var(--text);
             font-size: 0.88rem;
             font-weight: 600;
+        }
+        .map-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(245, 158, 11, 0.28);
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--text);
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+        .map-action-btn:hover,
+        .map-action-btn:focus-visible {
+            transform: translateY(-1px);
+            background: rgba(245, 158, 11, 0.18);
+            border-color: rgba(245, 158, 11, 0.44);
+            outline: none;
+        }
+        .map-action-btn.is-running {
+            background: rgba(34, 211, 238, 0.16);
+            border-color: rgba(34, 211, 238, 0.4);
         }
         .career-map {
             width: 100%;
@@ -589,6 +621,24 @@
         }
         .career-map canvas:active {
             cursor: grabbing;
+        }
+        .experience-marker {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            pointer-events: auto;
+        }
+        .experience-city-label {
+            padding: 5px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(8, 15, 32, 0.88);
+            color: var(--text);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
         }
         .experience-detail {
             padding: 18px;
@@ -847,7 +897,7 @@
                         <div>
                             <p class="eyebrow">Career journey</p>
                             <h2>From IVRS automation to global calling reliability.</h2>
-                            <p>Select a stop in the timeline to see the systems I built, the impact shipped at each company, and the cities that shaped the path from Chennai to Microsoft Teams.</p>
+                            <p>Select a stop in the timeline to see the systems I built, the impact shipped at each company, and the cities that shaped the path from Chennai to Seattle.</p>
                         </div>
                         <div class="career-glance" aria-label="Career overview">
                             <div class="career-glance-card">
@@ -859,8 +909,8 @@
                                 <span>Analytics, healthcare, education tech, cloud recovery, and enterprise communications.</span>
                             </div>
                             <div class="career-glance-card">
-                                <strong>3 cities, 2 countries</strong>
-                                <span>Chennai, Hyderabad, and Dallas mapped into one interactive journey.</span>
+                                <strong>4 cities, 2 countries</strong>
+                                <span>Chennai, Hyderabad, Dallas, and Seattle mapped into one interactive journey.</span>
                             </div>
                         </div>
                     </div>
@@ -879,7 +929,10 @@
                                         <h3>Interactive globe</h3>
                                         <p>Drag to rotate the globe. Pins, rings, and arcs follow the selected stop in the timeline.</p>
                                     </div>
-                                    <div id="experienceRouteLabel" class="route-chip">Chennai -> Hyderabad -> Dallas</div>
+                                    <div class="map-actions">
+                                        <button id="animateJourneyBtn" class="map-action-btn" type="button">Animate Journey</button>
+                                        <div id="experienceRouteLabel" class="route-chip">Chennai -> Hyderabad -> Dallas -> Seattle</div>
+                                    </div>
                                 </div>
                                 <div id="careerMap" class="career-map" role="img" aria-label="Interactive globe showing work locations"></div>
                             </div>
@@ -1111,6 +1164,7 @@
                     start: 'May 2011',
                     end: 'Feb 2012',
                     locationLabel: 'Chennai, India',
+                    cityLabel: 'Chennai',
                     routeLabel: 'Chennai',
                     metric: '65% of customer queries resolved automatically',
                     summary: 'Started with customer support automation, building IVRS flows that deflected most queries before they needed an agent.',
@@ -1120,7 +1174,7 @@
                     ],
                     tags: ['IVRS', 'Automation', 'Customer Support', 'Backend Systems'],
                     locations: [
-                        { key: 'chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'Global Analytics' }
+                        { key: 'chennai', shortName: 'Chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'Global Analytics' }
                     ]
                 },
                 {
@@ -1130,7 +1184,8 @@
                     start: 'Feb 2012',
                     end: 'Dec 2014',
                     locationLabel: 'Chennai, India',
-                    routeLabel: 'Chennai',
+                    cityLabel: 'Chennai',
+                    routeLabel: 'Chennai -> Chennai',
                     metric: '15% faster clinical workflow processing',
                     summary: 'Moved deeper into platform engineering by modernizing clinical-document workflows and shipping automation for internal operators.',
                     highlights: [
@@ -1140,7 +1195,7 @@
                     ],
                     tags: ['Healthcare', 'Async Processing', 'Caching', 'Platform Modernization'],
                     locations: [
-                        { key: 'chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'athenahealth' }
+                        { key: 'chennai', shortName: 'Chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'athenahealth' }
                     ]
                 },
                 {
@@ -1150,7 +1205,8 @@
                     start: 'Jan 2015',
                     end: 'Oct 2015',
                     locationLabel: 'Chennai, India',
-                    routeLabel: 'Chennai',
+                    cityLabel: 'Chennai',
+                    routeLabel: 'Chennai -> Chennai',
                     metric: '14M students reached through TenMarks',
                     summary: 'Applied product engineering at scale, building education workflows used by school districts across the United States.',
                     highlights: [
@@ -1160,29 +1216,70 @@
                     ],
                     tags: ['EdTech', 'Integrations', 'Data Reconciliation', 'Product Engineering'],
                     locations: [
-                        { key: 'chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'Amazon Kindle Education' }
+                        { key: 'chennai', shortName: 'Chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'Amazon Kindle Education' }
                     ]
                 },
                 {
-                    id: 'microsoft',
+                    id: 'microsoft-hyderabad',
                     role: 'Senior Software Engineer',
                     company: 'Microsoft',
                     start: 'Dec 2015',
-                    end: 'Present',
-                    locationLabel: 'Hyderabad, India -> Dallas, Texas',
-                    routeLabel: 'Hyderabad -> Dallas',
-                    metric: '54 Azure regions + $1.5B in revenue protected',
-                    summary: 'Scaled from cloud recovery into Microsoft Teams Enterprise Voice, owning reliability, large-system architecture, and AI-assisted live-site response.',
+                    end: 'Apr 2022',
+                    locationLabel: 'Hyderabad, India',
+                    cityLabel: 'Hyderabad',
+                    routeLabel: 'Chennai -> Hyderabad',
+                    metric: '54 Azure regions restored with faster recovery',
+                    summary: 'Built cloud recovery and backup systems in Hyderabad, focusing on Azure Backup scale, resilience, and faster restore workflows.',
                     highlights: [
                         'Shipped large-disk restore, private endpoint support, and SAP HANA Linux restore across 54 Azure regions for Azure Backup.',
                         'Parallelized IaaS VM recovery, cutting disk mount time from about 5 minutes to under 30 seconds.',
-                        'Re-architected Microsoft Teams calling scenarios with React and TypeScript while driving 99.9%+ availability for critical user journeys.',
-                        'Improved incident workflows and service-to-service security, reducing Azure AD request load from roughly 20 million per day to under 100 and accelerating triage.'
+                        'Improved restore performance by moving clusters onto higher-performance D-series VMs and SSD-backed storage.'
                     ],
-                    tags: ['C#', 'React', 'TypeScript', 'Azure', 'Live-site', 'AI Automation'],
+                    tags: ['Azure Backup', 'C#', 'Cloud Recovery', 'Reliability'],
                     locations: [
-                        { key: 'hyderabad', name: 'Hyderabad, India', coords: [17.385, 78.4867], note: 'Azure Backup' },
-                        { key: 'dallas', name: 'Dallas, Texas', coords: [32.7767, -96.797], note: 'Teams Enterprise Voice' }
+                        { key: 'hyderabad', shortName: 'Hyderabad', name: 'Hyderabad, India', coords: [17.385, 78.4867], note: 'Azure Backup' }
+                    ]
+                },
+                {
+                    id: 'microsoft-texas',
+                    role: 'Senior Software Engineer',
+                    company: 'Microsoft',
+                    start: 'May 2022',
+                    end: 'May 2024',
+                    locationLabel: 'Dallas, Texas',
+                    cityLabel: 'Dallas',
+                    routeLabel: 'Hyderabad -> Dallas',
+                    metric: 'Enterprise Voice architecture and live-site leadership',
+                    summary: 'Shifted into Microsoft Teams Enterprise Voice in Texas, driving service health, reliability, and architecture for calling scenarios.',
+                    highlights: [
+                        'Owned architecture and live-site reliability for Enterprise Voice and critical Teams calling journeys.',
+                        'Reduced Azure AD traffic from roughly 20 million requests per day to under 100 by hardening service-to-service authentication.',
+                        'Strengthened incident workflows and automation to accelerate triage and recovery across the calling stack.'
+                    ],
+                    tags: ['Teams', 'Enterprise Voice', 'Live-site', 'Architecture'],
+                    locations: [
+                        { key: 'dallas', shortName: 'Dallas', name: 'Dallas, Texas', coords: [32.7767, -96.797], note: 'Teams Enterprise Voice' }
+                    ]
+                },
+                {
+                    id: 'microsoft-seattle',
+                    role: 'Senior Software Engineer',
+                    company: 'Microsoft',
+                    start: 'Jun 2024',
+                    end: 'Present',
+                    locationLabel: 'Seattle, Washington',
+                    cityLabel: 'Seattle',
+                    routeLabel: 'Dallas -> Seattle',
+                    metric: '$1.5B in revenue protected through calling reliability',
+                    summary: 'Continued the Teams calling mission from Seattle, scaling AI-assisted live-site operations and reliability for global enterprise communications.',
+                    highlights: [
+                        'Re-architected Microsoft Teams calling scenarios with React and TypeScript while driving 99.9%+ availability for critical user journeys.',
+                        'Built automation that cut incident triage time by more than 60% and improved operational clarity for service reviews.',
+                        'Led reliability work that protected more than $1.5B in revenue for Teams Enterprise Voice.'
+                    ],
+                    tags: ['React', 'TypeScript', 'AI Automation', 'Global Calling'],
+                    locations: [
+                        { key: 'seattle', shortName: 'Seattle', name: 'Seattle, Washington', coords: [47.6062, -122.3321], note: 'Teams Enterprise Voice' }
                     ]
                 }
             ];
@@ -1191,6 +1288,7 @@
             const detailEl = document.getElementById('experienceDetail');
             const routeLabelEl = document.getElementById('experienceRouteLabel');
             const mapEl = document.getElementById('careerMap');
+            const animateJourneyBtn = document.getElementById('animateJourneyBtn');
 
             const locationIndex = new Map();
             careerData.forEach((entry) => {
@@ -1212,12 +1310,141 @@
                 </button>
             `;
 
+            timelineEl.innerHTML = careerData.map(createTimelineCard).join('');
+            const timelineButtons = Array.from(timelineEl.querySelectorAll('.timeline-card'));
+
+            let selectedRole = careerData[careerData.length - 1];
+            let globe;
+            let mapReady = false;
+            let globeLocations = [];
+            let animationTimeout;
+            let isJourneyAnimating = false;
+
+            const setTimelineState = () => {
+                timelineButtons.forEach((button) => {
+                    const isActive = button.dataset.roleId === selectedRole.id;
+                    button.classList.toggle('is-active', isActive);
+                    button.setAttribute('aria-pressed', String(isActive));
+                });
+            };
+
+            const toLatLng = (location) => ({
+                ...location,
+                lat: location.coords[0],
+                lng: location.coords[1]
+            });
+
+            const getEntryIndex = (roleId) => careerData.findIndex((entry) => entry.id === roleId);
+            const getPreviousEntry = (entry) => {
+                const index = getEntryIndex(entry.id);
+                return index > 0 ? careerData[index - 1] : null;
+            };
+
+            const buildJourneyStops = () => Array.from(locationIndex.values()).map(toLatLng);
+
+            const buildJourneyArcs = () => {
+                const stops = buildJourneyStops();
+                return stops.slice(0, -1).map((location, index) => ({
+                    startLat: location.lat,
+                    startLng: location.lng,
+                    endLat: stops[index + 1].lat,
+                    endLng: stops[index + 1].lng,
+                    kind: 'journey'
+                }));
+            };
+
+            const buildTransitionArc = (fromLocation, toLocation) => {
+                if (!fromLocation || !toLocation) {
+                    return [];
+                }
+
+                const from = toLatLng(fromLocation);
+                const to = toLatLng(toLocation);
+                const sameCity = from.key === to.key;
+
+                return [{
+                    startLat: sameCity ? from.lat - 0.16 : from.lat,
+                    startLng: sameCity ? from.lng - 0.48 : from.lng,
+                    endLat: sameCity ? to.lat + 0.16 : to.lat,
+                    endLng: sameCity ? to.lng + 0.48 : to.lng,
+                    kind: 'active',
+                    sameCity
+                }];
+            };
+
+            const buildActiveArcs = () => {
+                const previousEntry = getPreviousEntry(selectedRole);
+                if (!previousEntry) {
+                    return [];
+                }
+                return buildTransitionArc(previousEntry.locations[0], selectedRole.locations[0]);
+            };
+
+            const updateAnimationButton = () => {
+                animateJourneyBtn.classList.toggle('is-running', isJourneyAnimating);
+                animateJourneyBtn.textContent = isJourneyAnimating ? 'Stop Animation' : 'Animate Journey';
+            };
+
+            const stopJourneyAnimation = () => {
+                isJourneyAnimating = false;
+                if (animationTimeout) {
+                    clearTimeout(animationTimeout);
+                    animationTimeout = undefined;
+                }
+                updateAnimationButton();
+            };
+
+            const getRoleFocus = (entry = selectedRole, zoomedIn = false) => {
+                const stops = entry.locations.map(toLatLng);
+                if (!stops.length) {
+                    return { lat: 18, lng: 20, altitude: zoomedIn ? 1.7 : 2.85 };
+                }
+                const lat = stops.reduce((sum, location) => sum + location.lat, 0) / stops.length;
+                const lng = stops.reduce((sum, location) => sum + location.lng, 0) / stops.length;
+                return {
+                    lat,
+                    lng,
+                    altitude: zoomedIn ? 1.25 : 2.35
+                };
+            };
+
+            const animateJourneyStep = (index = 0) => {
+                if (!isJourneyAnimating) {
+                    return;
+                }
+                const entry = careerData[index % careerData.length];
+                selectRole(entry.id, { zoomedIn: true });
+                const nextIndex = (index + 1) % careerData.length;
+                animationTimeout = setTimeout(() => animateJourneyStep(nextIndex), prefersReducedMotion ? 900 : 2200);
+            };
+
+            const startJourneyAnimation = () => {
+                isJourneyAnimating = true;
+                updateAnimationButton();
+                animateJourneyStep(getEntryIndex(selectedRole.id));
+            };
+
+            const buildDetailTransition = (entry) => {
+                const previousEntry = getPreviousEntry(entry);
+                if (!previousEntry) {
+                    return '';
+                }
+                return `
+                            <div class="detail-block">
+                                <h4>Transition</h4>
+                                <div class="detail-locations">
+                                    <span>${escapeHtml(previousEntry.cityLabel)} -> ${escapeHtml(entry.cityLabel)}</span>
+                                </div>
+                            </div>
+                `;
+            };
+
             const renderDetail = (entry) => {
                 detailEl.innerHTML = `
                     <div class="detail-top">
                         <div>
                             <p class="eyebrow mb-1">Selected stop</p>
-                            <h3>${escapeHtml(entry.company)}</h3>
+                            <h3>${escapeHtml(entry.company)} · ${escapeHtml(entry.cityLabel)}</h3>
                             <div class="detail-role">${escapeHtml(entry.role)} | ${escapeHtml(entry.start)} - ${escapeHtml(entry.end)}</div>
                         </div>
                         <div class="route-chip">${escapeHtml(entry.metric)}</div>
@@ -1236,6 +1463,7 @@
                                 ${entry.locations.map((location) => `<span>${escapeHtml(location.name)} | ${escapeHtml(location.note)}</span>`).join('')}
                             </div>
                         </div>
+                        ${buildDetailTransition(entry)}
                         <div class="detail-block">
                             <h4>Focus areas</h4>
                             <div class="detail-tags">
@@ -1246,67 +1474,7 @@
                 `;
             };
 
-            timelineEl.innerHTML = careerData.map(createTimelineCard).join('');
-            const timelineButtons = Array.from(timelineEl.querySelectorAll('.timeline-card'));
-
-            let selectedRole = careerData[careerData.length - 1];
-            let globe;
-            let mapReady = false;
-            let globeLocations = [];
-
-            const setTimelineState = () => {
-                timelineButtons.forEach((button) => {
-                    const isActive = button.dataset.roleId === selectedRole.id;
-                    button.classList.toggle('is-active', isActive);
-                    button.setAttribute('aria-pressed', String(isActive));
-                });
-            };
-
-            const toLatLng = (location) => ({
-                ...location,
-                lat: location.coords[0],
-                lng: location.coords[1]
-            });
-
-            const buildJourneyStops = () => Array.from(locationIndex.values()).map(toLatLng);
-
-            const buildJourneyArcs = () => {
-                const stops = buildJourneyStops();
-                return stops.slice(0, -1).map((location, index) => ({
-                    startLat: location.lat,
-                    startLng: location.lng,
-                    endLat: stops[index + 1].lat,
-                    endLng: stops[index + 1].lng,
-                    kind: 'journey'
-                }));
-            };
-
-            const buildActiveArcs = () => {
-                const stops = selectedRole.locations.map(toLatLng);
-                return stops.slice(0, -1).map((location, index) => ({
-                    startLat: location.lat,
-                    startLng: location.lng,
-                    endLat: stops[index + 1].lat,
-                    endLng: stops[index + 1].lng,
-                    kind: 'active'
-                }));
-            };
-
-            const getRoleFocus = () => {
-                const stops = selectedRole.locations.map(toLatLng);
-                if (!stops.length) {
-                    return { lat: 18, lng: 20, altitude: 2.85 };
-                }
-                const lat = stops.reduce((sum, location) => sum + location.lat, 0) / stops.length;
-                const lng = stops.reduce((sum, location) => sum + location.lng, 0) / stops.length;
-                return {
-                    lat,
-                    lng,
-                    altitude: stops.length > 1 ? 2.7 : 2.35
-                };
-            };
-
-            const focusMapOnRole = () => {
+            const focusMapOnRole = ({ zoomedIn = false } = {}) => {
                 if (!mapReady) {
                     return;
                 }
@@ -1319,20 +1487,24 @@
                 globe.arcsData([...buildJourneyArcs(), ...buildActiveArcs()]);
                 globe.ringsData(selectedRole.locations.map(toLatLng));
 
-                const focus = getRoleFocus();
-                globe.pointOfView(focus, prefersReducedMotion ? 0 : 1100);
+                const focus = getRoleFocus(selectedRole, zoomedIn);
+                globe.pointOfView(focus, prefersReducedMotion ? 0 : (zoomedIn ? 1350 : 1100));
             };
 
-            const selectRole = (roleId) => {
+            const selectRole = (roleId, { zoomedIn = false } = {}) => {
                 const nextRole = careerData.find((entry) => entry.id === roleId);
                 if (!nextRole) {
                     return;
+                }
+                if (!isJourneyAnimating && animationTimeout) {
+                    clearTimeout(animationTimeout);
+                    animationTimeout = undefined;
                 }
                 selectedRole = nextRole;
                 routeLabelEl.textContent = selectedRole.routeLabel;
                 setTimelineState();
                 renderDetail(selectedRole);
-                focusMapOnRole();
+                focusMapOnRole({ zoomedIn });
             };
 
             const initializeMap = () => {
@@ -1360,24 +1532,69 @@
                     .htmlLng((location) => location.lng)
                     .htmlAltitude(() => 0.02)
                     .htmlElement((location) => {
+                        const marker = document.createElement('div');
+                        marker.className = 'experience-marker';
+
                         const pin = document.createElement('button');
                         pin.type = 'button';
                         pin.className = `experience-pin ${location.isActive ? 'is-active' : 'is-passive'}`;
                         pin.setAttribute('aria-label', `${location.name} - ${location.roles.map((role) => role.company).join(', ')}`);
                         pin.title = `${location.name}: ${location.roles.map((role) => role.company).join(', ')}`;
+
+                        const label = document.createElement('span');
+                        label.className = 'experience-city-label';
+                        label.textContent = location.shortName || location.name;
+
                         pin.addEventListener('click', () => {
+                            stopJourneyAnimation();
                             const matchingRole = location.roles.find((role) => role.id === selectedRole.id) || location.roles[location.roles.length - 1];
                             selectRole(matchingRole.id);
                         });
-                        return pin;
+
+                        marker.appendChild(pin);
+                        marker.appendChild(label);
+                        return marker;
                     })
-                    .arcColor((arc) => arc.kind === 'active' ? ['#22d3ee', '#f59e0b'] : ['rgba(148, 163, 184, 0.6)', 'rgba(148, 163, 184, 0.08)'])
-                    .arcDashLength((arc) => arc.kind === 'active' ? 0.45 : 0.18)
-                    .arcDashGap((arc) => arc.kind === 'active' ? 0.14 : 0.24)
+                    .arcColor((arc) => {
+                        if (arc.kind !== 'active') {
+                            return ['rgba(148, 163, 184, 0.6)', 'rgba(148, 163, 184, 0.08)'];
+                        }
+                        return ['#22d3ee', '#34d399'];
+                    })
+                    .arcDashLength((arc) => {
+                        if (arc.kind !== 'active') {
+                            return 0.18;
+                        }
+                        return 0.34;
+                    })
+                    .arcDashGap((arc) => {
+                        if (arc.kind !== 'active') {
+                            return 0.24;
+                        }
+                        return 0.12;
+                    })
                     .arcDashInitialGap(() => Math.random())
-                    .arcDashAnimateTime((arc) => arc.kind === 'active' ? 1700 : 2400)
-                    .arcStroke((arc) => arc.kind === 'active' ? 0.55 : 0.28)
-                    .arcAltitude((arc) => arc.kind === 'active' ? 0.22 : 0.12)
+                    .arcDashAnimateTime((arc) => {
+                        if (arc.kind !== 'active') {
+                            return 2400;
+                        }
+                        return 1500;
+                    })
+                    .arcStroke((arc) => {
+                        if (arc.kind !== 'active') {
+                            return 0.28;
+                        }
+                        return 0.64;
+                    })
+                    .arcAltitude((arc) => {
+                        if (arc.kind !== 'active') {
+                            return 0.12;
+                        }
+                        if (arc.sameCity) {
+                            return 0.08;
+                        }
+                        return 0.18;
+                    })
                     .ringsData([])
                     .ringColor(() => '#22d3ee')
                     .ringMaxRadius(4.2)
@@ -1419,6 +1636,8 @@
 
             setTimelineState();
             renderDetail(selectedRole);
+            routeLabelEl.textContent = selectedRole.routeLabel;
+            updateAnimationButton();
 
             const showSection = (id) => {
                 sections.forEach((section) => {
@@ -1462,7 +1681,17 @@
             navLinks.forEach((link) => link.addEventListener('click', handleClick));
             sectionLinks.forEach((link) => link.addEventListener('click', handleClick));
             timelineButtons.forEach((button) => {
-                button.addEventListener('click', () => selectRole(button.dataset.roleId));
+                button.addEventListener('click', () => {
+                    stopJourneyAnimation();
+                    selectRole(button.dataset.roleId);
+                });
+            });
+            animateJourneyBtn.addEventListener('click', () => {
+                if (isJourneyAnimating) {
+                    stopJourneyAnimation();
+                    return;
+                }
+                startJourneyAnimation();
             });
         });
     </script>
