@@ -345,6 +345,355 @@
         .projects-grid .project-card:nth-child(5) { animation-delay: 0.25s; }
         .projects-grid .project-card:nth-child(6) { animation-delay: 0.3s; }
         .projects-grid .project-card:nth-child(7) { animation-delay: 0.35s; }
+        .projects-grid .project-card:nth-child(8) { animation-delay: 0.4s; }
+        .projects-grid .project-card:nth-child(9) { animation-delay: 0.45s; }
+        .projects-grid .project-card:nth-child(10) { animation-delay: 0.5s; }
+        .career-panel {
+            position: relative;
+            overflow: hidden;
+        }
+        .career-panel:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(55% 55% at 8% 14%, rgba(34, 211, 238, 0.14), transparent),
+                radial-gradient(45% 45% at 92% 10%, rgba(245, 158, 11, 0.12), transparent);
+            pointer-events: none;
+        }
+        .career-header,
+        .career-layout,
+        .career-panel > * {
+            position: relative;
+            z-index: 1;
+        }
+        .career-header {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+            gap: 18px;
+            align-items: start;
+            margin-bottom: 24px;
+        }
+        .career-header p {
+            max-width: 62ch;
+        }
+        .career-glance {
+            display: grid;
+            gap: 12px;
+        }
+        .career-glance-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.08), rgba(12, 18, 34, 0.4));
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+        }
+        .career-glance-card strong {
+            display: block;
+            color: var(--text);
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+        .career-glance-card span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+        .career-layout {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.3fr);
+            gap: 18px;
+            align-items: start;
+        }
+        .career-layout > * {
+            min-width: 0;
+        }
+        .timeline-shell,
+        .map-card,
+        .experience-detail {
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: rgba(8, 15, 32, 0.72);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.22);
+        }
+        .timeline-shell {
+            padding: 18px;
+        }
+        .timeline-title-row,
+        .map-header,
+        .detail-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .timeline-title-row {
+            margin-bottom: 14px;
+        }
+        .timeline-title-row h3,
+        .map-header h3,
+        .detail-top h3 {
+            margin: 0;
+            font-size: 1.08rem;
+        }
+        .timeline-title-row span,
+        .map-header p,
+        .detail-top p {
+            color: var(--muted);
+            margin: 0;
+            font-size: 0.92rem;
+        }
+        .experience-timeline {
+            position: relative;
+            display: grid;
+            gap: 14px;
+            padding-left: 24px;
+        }
+        .experience-timeline:before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(34, 211, 238, 0.65), rgba(245, 158, 11, 0.28));
+        }
+        .timeline-card {
+            width: 100%;
+            position: relative;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(12, 18, 34, 0.58));
+            padding: 16px 18px;
+            color: var(--text);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .timeline-card:before {
+            content: "";
+            position: absolute;
+            left: -22px;
+            top: 22px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0c1222;
+            border: 2px solid rgba(34, 211, 238, 0.5);
+            box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.12);
+        }
+        .timeline-card:hover,
+        .timeline-card:focus-visible {
+            transform: translateX(4px);
+            border-color: rgba(34, 211, 238, 0.45);
+            box-shadow: 0 18px 28px rgba(0, 0, 0, 0.22);
+            outline: none;
+        }
+        .timeline-card.is-active {
+            border-color: rgba(34, 211, 238, 0.55);
+            background: linear-gradient(145deg, rgba(34, 211, 238, 0.18), rgba(245, 158, 11, 0.12));
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.28);
+        }
+        .timeline-card.is-active:before {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-color: #e7ecf6;
+            box-shadow: 0 0 0 7px rgba(34, 211, 238, 0.2);
+        }
+        .timeline-range {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .timeline-card h3 {
+            margin: 0 0 4px;
+            font-size: 1.1rem;
+        }
+        .timeline-company {
+            display: block;
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+        .timeline-location:before {
+            content: "*";
+            color: var(--accent-2);
+            font-size: 0.7rem;
+        }
+        .timeline-metric {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            font-size: 0.83rem;
+            font-weight: 600;
+        }
+        .experience-stage {
+            display: grid;
+            gap: 16px;
+            min-width: 0;
+        }
+        .map-card {
+            padding: 18px;
+            min-width: 0;
+        }
+        .map-header {
+            margin-bottom: 14px;
+        }
+        .route-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(34, 211, 238, 0.24);
+            background: rgba(34, 211, 238, 0.12);
+            color: var(--text);
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .career-map {
+            width: 100%;
+            min-width: 0;
+            height: 420px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                radial-gradient(90% 90% at 50% 0%, rgba(34, 211, 238, 0.12), transparent),
+                #09101f;
+        }
+        .map-fallback {
+            margin: 0;
+            padding: 24px;
+            color: var(--muted);
+        }
+        .career-map canvas {
+            display: block;
+            cursor: grab;
+        }
+        .career-map canvas:active {
+            cursor: grabbing;
+        }
+        .experience-detail {
+            padding: 18px;
+        }
+        .detail-top {
+            margin-bottom: 12px;
+        }
+        .detail-role {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+        .detail-summary {
+            margin-bottom: 16px;
+            max-width: 66ch;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 14px;
+        }
+        .detail-block {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .detail-block h4 {
+            margin: 0 0 10px;
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+        .detail-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 10px;
+        }
+        .detail-list li {
+            color: var(--text);
+            font-size: 0.94rem;
+            line-height: 1.55;
+        }
+        .detail-locations,
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .detail-locations span,
+        .detail-tags span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: var(--text);
+            font-size: 0.88rem;
+        }
+        .detail-locations span:before {
+            content: "+";
+            font-size: 0.9rem;
+        }
+        .detail-tags span:before {
+            content: "#";
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .experience-pin {
+            display: block;
+            width: 18px;
+            height: 18px;
+            position: relative;
+            padding: 0;
+            appearance: none;
+            border-radius: 999px;
+            border: 2px solid #09101f;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.16), 0 12px 22px rgba(0, 0, 0, 0.38);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+            cursor: pointer;
+        }
+        .experience-pin:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: calc(100% - 1px);
+            width: 2px;
+            height: 12px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, rgba(34, 211, 238, 0.8), rgba(34, 211, 238, 0.06));
+            border-radius: 999px;
+            pointer-events: none;
+        }
+        .experience-pin.is-passive {
+            opacity: 0.72;
+            box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.14), 0 10px 18px rgba(0, 0, 0, 0.28);
+        }
+        .experience-pin.is-active {
+            transform: scale(1.15);
+            box-shadow: 0 0 0 8px rgba(34, 211, 238, 0.22), 0 12px 22px rgba(0, 0, 0, 0.42);
         }
         .principles {
             list-style: none;
@@ -377,6 +726,35 @@
             .avatar-ring img {
                 width: 180px;
                 height: 180px;
+            }
+            .career-header,
+            .career-layout {
+                grid-template-columns: 1fr;
+            }
+            .career-map {
+                height: 360px;
+            }
+        }
+        @media (max-width: 576px) {
+            .panel {
+                padding: 22px;
+            }
+            .timeline-shell,
+            .map-card,
+            .experience-detail {
+                border-radius: 18px;
+            }
+            .experience-timeline {
+                padding-left: 20px;
+            }
+            .timeline-card {
+                padding: 14px 16px;
+            }
+            .timeline-card:before {
+                left: -18px;
+            }
+            .career-map {
+                height: 320px;
             }
         }
     </style>
@@ -464,36 +842,50 @@
                     </div>
                 </section>
 
-                <section id="work" class="panel">
-                    <h2>What I Work On</h2>
-                    <p>I lead architecture and live-site engineering for Microsoft Teams Enterprise Voice (Calling), shaping mission-critical calling flows end to end.</p>
-                    <div class="feature-grid">
-                        <div class="feature">
-                            <h3>Unified Flow</h3>
-                            <p>Redesigned orchestration layer that elevates reliability for Teams Calling.</p>
+                <section id="work" class="panel career-panel">
+                    <div class="career-header">
+                        <div>
+                            <p class="eyebrow">Career journey</p>
+                            <h2>From IVRS automation to global calling reliability.</h2>
+                            <p>Select a stop in the timeline to see the systems I built, the impact shipped at each company, and the cities that shaped the path from Chennai to Microsoft Teams.</p>
                         </div>
-                        <div class="feature">
-                            <h3>Windowing & advanced scenarios</h3>
-                            <p>Stronger state management and multi-device calling experiences.</p>
-                        </div>
-                        <div class="feature">
-                            <h3>Smart ICM & incident automation</h3>
-                            <p>AI-driven incident correlation and remediation across the calling stack.</p>
-                        </div>
-                        <div class="feature">
-                            <h3>Post-mortem, PRISM, MoreInfo</h3>
-                            <p>Sharper workflows and clarity to raise engineering quality across teams.</p>
-                        </div>
-                        <div class="feature">
-                            <h3>BRB bug automation</h3>
-                            <p>Automated root-cause analysis and triage using AI and signal-rich logs.</p>
-                        </div>
-                        <div class="feature">
-                            <h3>Live-site ownership</h3>
-                            <p>Reliability, monitoring, alerting, and incident response for global calling.</p>
+                        <div class="career-glance" aria-label="Career overview">
+                            <div class="career-glance-card">
+                                <strong>2011 -> now</strong>
+                                <span>14+ years of production systems and customer-facing engineering.</span>
+                            </div>
+                            <div class="career-glance-card">
+                                <strong>4 companies</strong>
+                                <span>Analytics, healthcare, education tech, cloud recovery, and enterprise communications.</span>
+                            </div>
+                            <div class="career-glance-card">
+                                <strong>3 cities, 2 countries</strong>
+                                <span>Chennai, Hyderabad, and Dallas mapped into one interactive journey.</span>
+                            </div>
                         </div>
                     </div>
-                    <p class="mt-3 mb-0">This work safeguards more than $1.5B in revenue and keeps a worldwide enterprise communication platform dependable.</p>
+                    <div class="career-layout">
+                        <div class="timeline-shell">
+                            <div class="timeline-title-row">
+                                <h3>Timeline</h3>
+                                <span>Choose a role to sync the map and highlights.</span>
+                            </div>
+                            <div id="experienceTimeline" class="experience-timeline" aria-label="Career timeline"></div>
+                        </div>
+                        <div class="experience-stage">
+                            <div class="map-card">
+                                <div class="map-header">
+                                    <div>
+                                        <h3>Interactive globe</h3>
+                                        <p>Drag to rotate the globe. Pins, rings, and arcs follow the selected stop in the timeline.</p>
+                                    </div>
+                                    <div id="experienceRouteLabel" class="route-chip">Chennai -> Hyderabad -> Dallas</div>
+                                </div>
+                                <div id="careerMap" class="career-map" role="img" aria-label="Interactive globe showing work locations"></div>
+                            </div>
+                            <div id="experienceDetail" class="experience-detail" aria-live="polite"></div>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="strengths" class="panel">
@@ -566,6 +958,45 @@
                             </div>
                             <div class="project-actions">
                                 <a class="project-link" href="https://harihari1989.github.io/machinelearner.github.io/">Visit project</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">Music Systems</div>
+                            <h3><a href="https://harihari1989.github.io/piano/">Piano Learner Studio</a></h3>
+                            <p>A browser piano practice lab with falling notes, interactive keyboard play, chord and scale drills, guided lessons, and melody playback from compact note notation.</p>
+                            <div class="project-tags">
+                                <span>Music</span>
+                                <span>Playback Engine</span>
+                                <span>Interactive UI</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="project-link" href="https://harihari1989.github.io/piano/">Visit project</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">Movement Coach</div>
+                            <h3><a href="https://harihari1989.github.io/Reverberesh/">Reverberesh</a></h3>
+                            <p>A lightweight fitness and movement coach that combines guided workout, yoga, and dance routines with a procedural 3D avatar, voice cues, and optional pose tracking.</p>
+                            <div class="project-tags">
+                                <span>Three.js</span>
+                                <span>MediaPipe</span>
+                                <span>Motion Design</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="project-link" href="https://harihari1989.github.io/Reverberesh/">Visit project</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <div class="project-meta">Leadership Systems</div>
+                            <h3><a href="https://harihari1989.github.io/BezosLetters/">Bezos Letters</a></h3>
+                            <p>An interactive reading companion for Jeff Bezos's shareholder letters with Day 1 principles, flywheel explainers, a year-by-year archive, and an embedded PDF viewer.</p>
+                            <div class="project-tags">
+                                <span>Leadership</span>
+                                <span>Strategy</span>
+                                <span>Reference Site</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="project-link" href="https://harihari1989.github.io/BezosLetters/">Visit project</a>
                             </div>
                         </article>
                         <article class="project-card">
@@ -657,11 +1088,337 @@
             </main>
         </div>
     </div>
+    <script src="https://unpkg.com/globe.gl"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const sections = Array.from(document.querySelectorAll('main section'));
             const navLinks = Array.from(document.querySelectorAll('.nav-section'));
             const sectionLinks = Array.from(document.querySelectorAll('.section-link'));
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const escapeHtml = (value) => value
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#39;');
+
+            const careerData = [
+                {
+                    id: 'global-analytics',
+                    role: 'Software Engineer',
+                    company: 'Global Analytics',
+                    start: 'May 2011',
+                    end: 'Feb 2012',
+                    locationLabel: 'Chennai, India',
+                    routeLabel: 'Chennai',
+                    metric: '65% of customer queries resolved automatically',
+                    summary: 'Started with customer support automation, building IVRS flows that deflected most queries before they needed an agent.',
+                    highlights: [
+                        'Built an IVRS system that automatically resolved 1,560 of 2,400 customer queries without a handoff to customer care agents.',
+                        'Developed an early instinct for production flows, support tooling, and the user impact of operational latency.'
+                    ],
+                    tags: ['IVRS', 'Automation', 'Customer Support', 'Backend Systems'],
+                    locations: [
+                        { key: 'chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'Global Analytics' }
+                    ]
+                },
+                {
+                    id: 'athenahealth',
+                    role: 'Software Engineer',
+                    company: 'athenahealth',
+                    start: 'Feb 2012',
+                    end: 'Dec 2014',
+                    locationLabel: 'Chennai, India',
+                    routeLabel: 'Chennai',
+                    metric: '15% faster clinical workflow processing',
+                    summary: 'Moved deeper into platform engineering by modernizing clinical-document workflows and shipping automation for internal operators.',
+                    highlights: [
+                        'Migrated a legacy clinical document processing workflow to vNext with SOLID design, async processing, caching, and background prefetch.',
+                        'Improved data-entry operator efficiency by 15% through faster workflows and better background processing.',
+                        'Delivered a BPO admin portal that saved 8 manual user-hours each month and earned an Extra Mile award.'
+                    ],
+                    tags: ['Healthcare', 'Async Processing', 'Caching', 'Platform Modernization'],
+                    locations: [
+                        { key: 'chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'athenahealth' }
+                    ]
+                },
+                {
+                    id: 'amazon',
+                    role: 'Software Development Engineer',
+                    company: 'Amazon Kindle Education',
+                    start: 'Jan 2015',
+                    end: 'Oct 2015',
+                    locationLabel: 'Chennai, India',
+                    routeLabel: 'Chennai',
+                    metric: '14M students reached through TenMarks',
+                    summary: 'Applied product engineering at scale, building education workflows used by school districts across the United States.',
+                    highlights: [
+                        'Built a data-reconciliation portal that integrated Clever school data into the TenMarks CMS used by 25,000 schools across 7,000 districts.',
+                        'Supported a product with roughly 14 million monthly active students by improving correctness of school and classroom data.',
+                        'Integrated Learnosity into the CMS authoring flow, eliminating repetitive developer work and saving about 2 developer-days each month.'
+                    ],
+                    tags: ['EdTech', 'Integrations', 'Data Reconciliation', 'Product Engineering'],
+                    locations: [
+                        { key: 'chennai', name: 'Chennai, India', coords: [13.0827, 80.2707], note: 'Amazon Kindle Education' }
+                    ]
+                },
+                {
+                    id: 'microsoft',
+                    role: 'Senior Software Engineer',
+                    company: 'Microsoft',
+                    start: 'Dec 2015',
+                    end: 'Present',
+                    locationLabel: 'Hyderabad, India -> Dallas, Texas',
+                    routeLabel: 'Hyderabad -> Dallas',
+                    metric: '54 Azure regions + $1.5B in revenue protected',
+                    summary: 'Scaled from cloud recovery into Microsoft Teams Enterprise Voice, owning reliability, large-system architecture, and AI-assisted live-site response.',
+                    highlights: [
+                        'Shipped large-disk restore, private endpoint support, and SAP HANA Linux restore across 54 Azure regions for Azure Backup.',
+                        'Parallelized IaaS VM recovery, cutting disk mount time from about 5 minutes to under 30 seconds.',
+                        'Re-architected Microsoft Teams calling scenarios with React and TypeScript while driving 99.9%+ availability for critical user journeys.',
+                        'Improved incident workflows and service-to-service security, reducing Azure AD request load from roughly 20 million per day to under 100 and accelerating triage.'
+                    ],
+                    tags: ['C#', 'React', 'TypeScript', 'Azure', 'Live-site', 'AI Automation'],
+                    locations: [
+                        { key: 'hyderabad', name: 'Hyderabad, India', coords: [17.385, 78.4867], note: 'Azure Backup' },
+                        { key: 'dallas', name: 'Dallas, Texas', coords: [32.7767, -96.797], note: 'Teams Enterprise Voice' }
+                    ]
+                }
+            ];
+
+            const timelineEl = document.getElementById('experienceTimeline');
+            const detailEl = document.getElementById('experienceDetail');
+            const routeLabelEl = document.getElementById('experienceRouteLabel');
+            const mapEl = document.getElementById('careerMap');
+
+            const locationIndex = new Map();
+            careerData.forEach((entry) => {
+                entry.locations.forEach((location) => {
+                    if (!locationIndex.has(location.key)) {
+                        locationIndex.set(location.key, { ...location, roles: [] });
+                    }
+                    locationIndex.get(location.key).roles.push(entry);
+                });
+            });
+
+            const createTimelineCard = (entry) => `
+                <button class="timeline-card" type="button" data-role-id="${entry.id}" aria-pressed="false">
+                    <span class="timeline-range">${escapeHtml(entry.start)} - ${escapeHtml(entry.end)}</span>
+                    <h3>${escapeHtml(entry.role)}</h3>
+                    <span class="timeline-company">${escapeHtml(entry.company)}</span>
+                    <span class="timeline-location">${escapeHtml(entry.locationLabel)}</span>
+                    <span class="timeline-metric">${escapeHtml(entry.metric)}</span>
+                </button>
+            `;
+
+            const renderDetail = (entry) => {
+                detailEl.innerHTML = `
+                    <div class="detail-top">
+                        <div>
+                            <p class="eyebrow mb-1">Selected stop</p>
+                            <h3>${escapeHtml(entry.company)}</h3>
+                            <div class="detail-role">${escapeHtml(entry.role)} | ${escapeHtml(entry.start)} - ${escapeHtml(entry.end)}</div>
+                        </div>
+                        <div class="route-chip">${escapeHtml(entry.metric)}</div>
+                    </div>
+                    <p class="detail-summary">${escapeHtml(entry.summary)}</p>
+                    <div class="detail-grid">
+                        <div class="detail-block">
+                            <h4>Impact highlights</h4>
+                            <ul class="detail-list">
+                                ${entry.highlights.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Locations</h4>
+                            <div class="detail-locations">
+                                ${entry.locations.map((location) => `<span>${escapeHtml(location.name)} | ${escapeHtml(location.note)}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Focus areas</h4>
+                            <div class="detail-tags">
+                                ${entry.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            };
+
+            timelineEl.innerHTML = careerData.map(createTimelineCard).join('');
+            const timelineButtons = Array.from(timelineEl.querySelectorAll('.timeline-card'));
+
+            let selectedRole = careerData[careerData.length - 1];
+            let globe;
+            let mapReady = false;
+            let globeLocations = [];
+
+            const setTimelineState = () => {
+                timelineButtons.forEach((button) => {
+                    const isActive = button.dataset.roleId === selectedRole.id;
+                    button.classList.toggle('is-active', isActive);
+                    button.setAttribute('aria-pressed', String(isActive));
+                });
+            };
+
+            const toLatLng = (location) => ({
+                ...location,
+                lat: location.coords[0],
+                lng: location.coords[1]
+            });
+
+            const buildJourneyStops = () => Array.from(locationIndex.values()).map(toLatLng);
+
+            const buildJourneyArcs = () => {
+                const stops = buildJourneyStops();
+                return stops.slice(0, -1).map((location, index) => ({
+                    startLat: location.lat,
+                    startLng: location.lng,
+                    endLat: stops[index + 1].lat,
+                    endLng: stops[index + 1].lng,
+                    kind: 'journey'
+                }));
+            };
+
+            const buildActiveArcs = () => {
+                const stops = selectedRole.locations.map(toLatLng);
+                return stops.slice(0, -1).map((location, index) => ({
+                    startLat: location.lat,
+                    startLng: location.lng,
+                    endLat: stops[index + 1].lat,
+                    endLng: stops[index + 1].lng,
+                    kind: 'active'
+                }));
+            };
+
+            const getRoleFocus = () => {
+                const stops = selectedRole.locations.map(toLatLng);
+                if (!stops.length) {
+                    return { lat: 18, lng: 20, altitude: 2.85 };
+                }
+                const lat = stops.reduce((sum, location) => sum + location.lat, 0) / stops.length;
+                const lng = stops.reduce((sum, location) => sum + location.lng, 0) / stops.length;
+                return {
+                    lat,
+                    lng,
+                    altitude: stops.length > 1 ? 2.7 : 2.35
+                };
+            };
+
+            const focusMapOnRole = () => {
+                if (!mapReady) {
+                    return;
+                }
+
+                const activeKeys = new Set(selectedRole.locations.map((location) => location.key));
+                globe.htmlElementsData(globeLocations.map((location) => ({
+                    ...location,
+                    isActive: activeKeys.has(location.key)
+                })));
+                globe.arcsData([...buildJourneyArcs(), ...buildActiveArcs()]);
+                globe.ringsData(selectedRole.locations.map(toLatLng));
+
+                const focus = getRoleFocus();
+                globe.pointOfView(focus, prefersReducedMotion ? 0 : 1100);
+            };
+
+            const selectRole = (roleId) => {
+                const nextRole = careerData.find((entry) => entry.id === roleId);
+                if (!nextRole) {
+                    return;
+                }
+                selectedRole = nextRole;
+                routeLabelEl.textContent = selectedRole.routeLabel;
+                setTimelineState();
+                renderDetail(selectedRole);
+                focusMapOnRole();
+            };
+
+            const initializeMap = () => {
+                if (mapReady || !mapEl) {
+                    return;
+                }
+
+                if (!window.Globe) {
+                    mapEl.innerHTML = '<p class="map-fallback">The interactive map could not load, but the timeline and role details are still available.</p>';
+                    return;
+                }
+
+                globeLocations = buildJourneyStops();
+
+                globe = window.Globe()(mapEl)
+                    .width(Math.max(320, Math.floor(mapEl.getBoundingClientRect().width)))
+                    .height(Math.max(320, Math.floor(mapEl.getBoundingClientRect().height)))
+                    .backgroundColor('rgba(0,0,0,0)')
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+                    .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+                    .showAtmosphere(true)
+                    .atmosphereColor('#22d3ee')
+                    .atmosphereAltitude(0.16)
+                    .htmlLat((location) => location.lat)
+                    .htmlLng((location) => location.lng)
+                    .htmlAltitude(() => 0.02)
+                    .htmlElement((location) => {
+                        const pin = document.createElement('button');
+                        pin.type = 'button';
+                        pin.className = `experience-pin ${location.isActive ? 'is-active' : 'is-passive'}`;
+                        pin.setAttribute('aria-label', `${location.name} - ${location.roles.map((role) => role.company).join(', ')}`);
+                        pin.title = `${location.name}: ${location.roles.map((role) => role.company).join(', ')}`;
+                        pin.addEventListener('click', () => {
+                            const matchingRole = location.roles.find((role) => role.id === selectedRole.id) || location.roles[location.roles.length - 1];
+                            selectRole(matchingRole.id);
+                        });
+                        return pin;
+                    })
+                    .arcColor((arc) => arc.kind === 'active' ? ['#22d3ee', '#f59e0b'] : ['rgba(148, 163, 184, 0.6)', 'rgba(148, 163, 184, 0.08)'])
+                    .arcDashLength((arc) => arc.kind === 'active' ? 0.45 : 0.18)
+                    .arcDashGap((arc) => arc.kind === 'active' ? 0.14 : 0.24)
+                    .arcDashInitialGap(() => Math.random())
+                    .arcDashAnimateTime((arc) => arc.kind === 'active' ? 1700 : 2400)
+                    .arcStroke((arc) => arc.kind === 'active' ? 0.55 : 0.28)
+                    .arcAltitude((arc) => arc.kind === 'active' ? 0.22 : 0.12)
+                    .ringsData([])
+                    .ringColor(() => '#22d3ee')
+                    .ringMaxRadius(4.2)
+                    .ringPropagationSpeed(1.8)
+                    .ringRepeatPeriod(900)
+                    .onGlobeReady(() => {
+                        focusMapOnRole();
+                    });
+
+                globe.controls().enablePan = false;
+                globe.controls().minDistance = 160;
+                globe.controls().maxDistance = 340;
+
+                const resizeGlobe = () => {
+                    if (!globe) {
+                        return;
+                    }
+                    const nextWidth = Math.max(320, Math.floor(mapEl.getBoundingClientRect().width));
+                    const nextHeight = Math.max(320, Math.floor(mapEl.getBoundingClientRect().height));
+                    globe.width(nextWidth);
+                    globe.height(nextHeight);
+                };
+
+                window.addEventListener('resize', resizeGlobe);
+
+                globe.htmlElementsData(globeLocations.map((location) => ({
+                    ...location,
+                    isActive: false
+                })));
+                globe.arcsData([...buildJourneyArcs(), ...buildActiveArcs()]);
+
+                mapReady = true;
+
+                setTimeout(() => {
+                    resizeGlobe();
+                    focusMapOnRole();
+                }, 140);
+            };
+
+            setTimelineState();
+            renderDetail(selectedRole);
 
             const showSection = (id) => {
                 sections.forEach((section) => {
@@ -674,16 +1431,28 @@
                 navLinks.forEach((link) => {
                     link.classList.toggle('active', link.dataset.section === id);
                 });
+                if (id === 'work') {
+                    initializeMap();
+                    if (mapReady) {
+                        setTimeout(() => {
+                            globe.width(mapEl.clientWidth);
+                            globe.height(mapEl.clientHeight);
+                            focusMapOnRole();
+                        }, 140);
+                    }
+                }
             };
 
-            // Hide all except hero on load
-            showSection('about');
+            const initialSection = window.location.hash.replace('#', '');
+            const hasInitialSection = sections.some((section) => section.id === initialSection);
+            showSection(hasInitialSection ? initialSection : 'about');
 
             const handleClick = (event) => {
                 const target = event.currentTarget.dataset.section;
                 if (!target) return;
                 event.preventDefault();
                 showSection(target);
+                window.history.replaceState(null, '', `#${target}`);
                 const sectionEl = document.getElementById(target);
                 if (sectionEl) {
                     sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -692,6 +1461,9 @@
 
             navLinks.forEach((link) => link.addEventListener('click', handleClick));
             sectionLinks.forEach((link) => link.addEventListener('click', handleClick));
+            timelineButtons.forEach((button) => {
+                button.addEventListener('click', () => selectRole(button.dataset.roleId));
+            });
         });
     </script>
 </body>
